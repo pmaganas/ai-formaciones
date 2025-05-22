@@ -24,6 +24,8 @@
             color: var(--primary-light);
             font-family: 'Rajdhani', sans-serif;
             min-height: 100vh;
+            padding: 0;
+            margin: 0;
         }
         
         .container-fluid {
@@ -62,13 +64,13 @@
         }
         
         .card-body {
-            padding: 1.2rem;
+            padding: 0.8rem;
         }
         
         .card-title {
             color: #fff;
             margin-bottom: 0.5rem;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             text-shadow: 0 0 10px rgba(0, 184, 255, 0.5);
         }
         
@@ -83,6 +85,7 @@
             border-color: var(--accent-purple);
             box-shadow: 0 0 20px rgba(132, 88, 255, 0.2);
             height: 100%;
+            width: 100%;
         }
         
         .special-card:hover {
@@ -96,7 +99,11 @@
         .special-card .card-title {
             color: #fff;
             text-shadow: 0 0 10px rgba(132, 88, 255, 0.5);
-            font-size: 1.6rem;
+            font-size: 1.2rem;
+        }
+        
+        .special-card .card-body {
+            padding: 1.2rem;
         }
         
         .special-card .line {
@@ -188,17 +195,21 @@
         .purple-glow-container {
             position: relative;
             z-index: 1;
+            width: 100%;
             height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .purple-glow-container::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: radial-gradient(ellipse at center, rgba(132, 88, 255, 0.5) 0%, rgba(132, 88, 255, 0.2) 40%, transparent 70%);
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            background: radial-gradient(ellipse at center, rgba(132, 88, 255, 0.6) 0%, rgba(132, 88, 255, 0.3) 40%, transparent 70%);
             border-radius: 50%;
             z-index: -1;
             pointer-events: none;
@@ -213,158 +224,124 @@
                 opacity: 1;
             }
         }
-        
+                
+        /* Estructura principal tipo carta de juego */
         .main-container {
-            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 0 15px;
         }
         
-        .video-main-grid {
+        .main-section {
+            flex-basis: 65%;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
         }
         
-        .special-video-card {
+        .special-section {
+            flex-basis: 30%;
+            display: flex;
+            align-items: center;
             height: 100%;
         }
         
+        /* Estilos para el título */
+        .futuristic-title {
+            color: var(--accent-blue);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(0, 184, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+        
+        .header-line {
+            height: 3px;
+            width: 200px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin-bottom: 2rem;
+        }
+        
         @media (max-width: 992px) {
-            .layout-container {
+            .main-container {
                 flex-direction: column;
             }
             
-            .main-col {
-                width: 100%;
-                margin-bottom: 20px;
+            .main-section, .special-section {
+                flex-basis: 100%;
             }
             
-            .special-col {
-                width: 100%;
+            .main-section {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+            }
+            
+            .futuristic-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container-fluid main-container">
-        <div class="d-flex layout-container">
-            <!-- Columna Principal con 4 Videos -->
-            <div class="flex-grow-1 me-3 main-col">
-                <div class="video-main-grid">
-                    <!-- Formacion I -->
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="corner top-left"></div>
-                            <div class="corner top-right"></div>
-                            <div class="corner bottom-left"></div>
-                            <div class="corner bottom-right"></div>
-                            
-                            <div class="card-body">
-                                <h3 class="card-title">Formacion I</h3>
-                                <div class="line"></div>
-                                <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/5egVYn9ebEA" 
-                                            title="Formacion I" 
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Formacion II -->
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="corner top-left"></div>
-                            <div class="corner top-right"></div>
-                            <div class="corner bottom-left"></div>
-                            <div class="corner bottom-right"></div>
-                            
-                            <div class="card-body">
-                                <h3 class="card-title">Formacion II</h3>
-                                <div class="line"></div>
-                                <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/P0Zq2sbV9AQ" 
-                                            title="Formacion II" 
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Formacion III -->
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="corner top-left"></div>
-                            <div class="corner top-right"></div>
-                            <div class="corner bottom-left"></div>
-                            <div class="corner bottom-right"></div>
-                            
-                            <div class="card-body">
-                                <h3 class="card-title">Formacion III</h3>
-                                <div class="line"></div>
-                                <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/fwTUF6Uj4-M" 
-                                            title="Formacion III" 
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Formacion IV -->
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="corner top-left"></div>
-                            <div class="corner top-right"></div>
-                            <div class="corner bottom-left"></div>
-                            <div class="corner bottom-right"></div>
-                            
-                            <div class="card-body">
-                                <h3 class="card-title">Formacion IV</h3>
-                                <div class="line"></div>
-                                <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/o2OgAC6an4U" 
-                                            title="Formacion IV" 
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen></iframe>
-                                </div>
+    <div class="container-fluid">
+        <header class="text-center mb-4">
+            <h1 class="display-4 fw-bold futuristic-title">Formaciones de Inteligencia Artificial</h1>
+            <div class="header-line mx-auto"></div>
+        </header>
+        
+        <div class="main-container">
+            <!-- Sección principal con los 4 videos en cuadrícula -->
+            <div class="main-section">
+                {% for video in videos[:4] %}
+                <div class="card-container">
+                    <div class="card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">{{ video.title }}</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/{{ video.id }}" 
+                                        title="{{ video.title }}" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
             
-            <!-- Columna Especial -->
-            <div class="special-col" style="width: 32%;">
-                <div class="special-video-card h-100">
-                    <div class="purple-glow-container">
-                        <div class="card special-card">
-                            <div class="corner top-left"></div>
-                            <div class="corner top-right"></div>
-                            <div class="corner bottom-left"></div>
-                            <div class="corner bottom-right"></div>
-                            
-                            <div class="badge-special">
-                                <i class="fas fa-star me-1"></i> ESPECIAL
-                            </div>
-                            
-                            <div class="card-body">
-                                <h3 class="card-title">Formacion Jon Hernandez</h3>
-                                <div class="line"></div>
-                                <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/_GuX0gmSmas" 
-                                            title="Formacion Jon Hernandez" 
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen></iframe>
-                                </div>
+            <!-- Sección especial para el video de Jon Hernandez -->
+            <div class="special-section">
+                <div class="purple-glow-container">
+                    <div class="card special-card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="badge-special">
+                            <i class="fas fa-star me-1"></i> ESPECIAL
+                        </div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">{{ videos[4].title }}</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/{{ videos[4].id }}" 
+                                        title="{{ videos[4].title }}" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
