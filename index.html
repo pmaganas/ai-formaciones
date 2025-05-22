@@ -3,738 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formaciones de IA - Futurista</title>
+    <title>Formaciones de Inteligencia Artificial</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts - Futuristic -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ============= FUTURISTIC AI THEME ============= */
         :root {
-            /* Main Colors */
             --primary-dark: #0a0a1a;
             --primary-light: #e6f1ff;
             --accent-blue: #00b8ff;
             --accent-purple: #8458ff;
             --accent-cyan: #00ffcc;
-            
-            /* Gradient Values */
-            --gradient-blue: linear-gradient(135deg, #0072ff, #00c6ff);
-            --gradient-purple: linear-gradient(135deg, #7a36e5, #cb49ff);
-            --gradient-special: linear-gradient(135deg, #ff3e9d, #cb49ff, #0072ff);
-            
-            /* Shadows and Glows */
-            --neon-blue-glow: 0 0 10px rgba(0, 184, 255, 0.7), 0 0 20px rgba(0, 184, 255, 0.4), 0 0 30px rgba(0, 184, 255, 0.2);
-            --neon-purple-glow: 0 0 10px rgba(132, 88, 255, 0.7), 0 0 20px rgba(132, 88, 255, 0.4), 0 0 30px rgba(132, 88, 255, 0.2);
-            --card-shadow: 0 8px 32px rgba(0, 15, 40, 0.3);
-            
-            /* Fonts */
-            --font-heading: 'Orbitron', sans-serif;
-            --font-body: 'Rajdhani', sans-serif;
-            --font-accent: 'Quicksand', sans-serif;
         }
-
-        /* ============= GENERAL STYLES ============= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        
         body {
             background-color: var(--primary-dark);
             color: var(--primary-light);
-            font-family: var(--font-body);
-            line-height: 1.6;
+            font-family: 'Rajdhani', sans-serif;
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
         }
-
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
-        .ai-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(10, 10, 50, 0.1) 0%, rgba(10, 10, 26, 0.4) 80%),
-                linear-gradient(to bottom, rgba(10, 10, 26, 0.8) 0%, rgba(10, 10, 26, 0.6) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .main-container {
-            position: relative;
-            z-index: 10;
+        
+        .container-fluid {
             padding: 2rem;
-            max-width: 1600px;
-            margin: 0 auto;
         }
-
-        /* ============= TYPOGRAPHY ============= */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
+        
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            margin-bottom: 1rem;
         }
-
-        .main-title {
-            font-size: 2.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 1.5rem;
-            text-shadow: 0 0 10px rgba(0, 184, 255, 0.5);
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: hue-rotate 5s infinite linear;
-        }
-
-        .glow-text {
-            text-shadow: var(--neon-blue-glow);
-            animation: pulse-glow 3s infinite alternate;
-        }
-
-        .footer-text {
-            font-family: var(--font-accent);
-            font-size: 0.9rem;
-            color: rgba(230, 241, 255, 0.6);
-            margin-top: 1rem;
-        }
-
-        /* ============= DECORATIVE ELEMENTS ============= */
-        .cyberpunk-line {
-            height: 2px;
-            background: var(--gradient-blue);
-            width: 80%;
-            margin: 1rem auto 2rem;
-            position: relative;
-            border-radius: 1px;
+        
+        .card {
+            background-color: rgba(10, 10, 26, 0.8);
+            border: 1px solid var(--accent-blue);
+            border-radius: 5px;
             overflow: hidden;
+            position: relative;
+            height: 100%;
+            transition: all 0.3s ease;
         }
-
-        .cyberpunk-line::before {
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 184, 255, 0.15);
+        }
+        
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 184, 255, 0.1), transparent 80%);
+            pointer-events: none;
+        }
+        
+        .card-body {
+            padding: 0.8rem;
+        }
+        
+        .card-title {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(0, 184, 255, 0.5);
+        }
+        
+        .line {
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), transparent);
             width: 50%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            animation: cyberpunk-line-animation 4s linear infinite;
-        }
-
-        .pulse-line {
-            height: 1px;
-            width: 30%;
-            background: var(--accent-blue);
-            margin: 0.5rem 0;
-            position: relative;
-            animation: pulse-animation 3s infinite;
-        }
-
-        .special-pulse {
-            background: var(--accent-purple);
-            width: 50%;
-        }
-
-        /* ============= VIDEO CARDS ============= */
-        .video-content {
-            min-height: 70vh;
-        }
-
-        .futuristic-card {
-            background: rgba(10, 10, 26, 0.8);
-            border: 1px solid rgba(0, 184, 255, 0.3);
-            border-radius: 5px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: var(--card-shadow);
-            transform: translateZ(0);
-            height: 100%;
-        }
-
-        .video-card-container {
-            margin-bottom: 2rem;
-            perspective: 1000px;
-        }
-
-        .video-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .video-title {
             margin-bottom: 1rem;
-            z-index: 2;
-            position: relative;
         }
-
-        .video-title h3 {
-            font-size: 1.4rem;
-            color: var(--primary-light);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .video-container {
-            margin-top: auto;
-            position: relative;
-            z-index: 2;
-            border-radius: 3px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .featured {
-            box-shadow: 0 0 20px rgba(132, 88, 255, 0.4);
-            border: 1px solid rgba(132, 88, 255, 0.6);
-            transform: scale(1.02);
-            height: calc(100% - 0.6rem);
-        }
-
-        .special-video {
-            display: flex;
-            align-items: center;
+        
+        .special-card {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 20px rgba(132, 88, 255, 0.2);
             height: 100%;
+            width: 100%;
         }
-
-        .special-title h3 {
+        
+        .special-card:hover {
+            box-shadow: 0 10px 25px rgba(132, 88, 255, 0.3);
+        }
+        
+        .special-card::before {
+            background: linear-gradient(135deg, rgba(132, 88, 255, 0.1), transparent 80%);
+        }
+        
+        .special-card .card-title {
             color: #fff;
             text-shadow: 0 0 10px rgba(132, 88, 255, 0.5);
-            font-size: 1.6rem;
+            font-size: 1.2rem;
         }
-
-        .card-glow {
+        
+        .special-card .card-body {
+            padding: 1.2rem;
+        }
+        
+        .special-card .line {
+            background: linear-gradient(90deg, var(--accent-purple), transparent);
+        }
+        
+        .badge-special {
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 184, 255, 0.15), transparent 70%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #7a36e5, #cb49ff);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(132, 88, 255, 0.7);
         }
-
-        .special-glow {
-            background: radial-gradient(circle at 50% 50%, rgba(132, 88, 255, 0.25), transparent 70%);
-            opacity: 0.8;
-        }
-
-        .futuristic-card:hover .card-glow {
-            opacity: 0.8;
-        }
-
-        .futuristic-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 15, 40, 0.4);
-            border-color: rgba(0, 184, 255, 0.6);
-        }
-
-        .featured:hover {
-            transform: translateY(-5px) scale(1.04);
-            border-color: rgba(132, 88, 255, 0.8);
-        }
-
-        .card-corner {
+        
+        .corner {
             position: absolute;
             width: 10px;
             height: 10px;
             border-style: solid;
             border-width: 2px;
             border-color: transparent;
-            z-index: 2;
+            transition: all 0.3s ease;
         }
-
+        
         .top-left {
-            top: 10px;
-            left: 10px;
+            top: 5px;
+            left: 5px;
             border-top-color: var(--accent-blue);
             border-left-color: var(--accent-blue);
         }
-
+        
         .top-right {
-            top: 10px;
-            right: 10px;
+            top: 5px;
+            right: 5px;
             border-top-color: var(--accent-blue);
             border-right-color: var(--accent-blue);
         }
-
+        
         .bottom-left {
-            bottom: 10px;
-            left: 10px;
+            bottom: 5px;
+            left: 5px;
             border-bottom-color: var(--accent-blue);
             border-left-color: var(--accent-blue);
         }
-
+        
         .bottom-right {
-            bottom: 10px;
-            right: 10px;
+            bottom: 5px;
+            right: 5px;
             border-bottom-color: var(--accent-blue);
             border-right-color: var(--accent-blue);
         }
-
-        .featured .card-corner {
+        
+        .card:hover .corner {
+            width: 15px;
+            height: 15px;
+        }
+        
+        .special-card .corner {
             border-color: transparent;
         }
-
-        .featured .top-left, .featured .top-right {
+        
+        .special-card .corner.top-left,
+        .special-card .corner.top-right {
             border-top-color: var(--accent-purple);
         }
-
-        .featured .bottom-left, .featured .bottom-right {
+        
+        .special-card .corner.bottom-left,
+        .special-card .corner.bottom-right {
             border-bottom-color: var(--accent-purple);
         }
-
-        .featured .top-left, .featured .bottom-left {
+        
+        .special-card .corner.top-left,
+        .special-card .corner.bottom-left {
             border-left-color: var(--accent-purple);
         }
-
-        .featured .top-right, .featured .bottom-right {
+        
+        .special-card .corner.top-right,
+        .special-card .corner.bottom-right {
             border-right-color: var(--accent-purple);
         }
-
-        .special-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(135deg, #7a36e5, #cb49ff);
-            border-radius: 20px;
-            padding: 5px 12px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-family: var(--font-heading);
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            z-index: 3;
-            box-shadow: 0 0 10px rgba(132, 88, 255, 0.7);
-            animation: pulse-badge 3s infinite alternate;
-        }
-
-        .special-icon {
+        
+        .purple-glow-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-        /* ============= ANIMATIONS ============= */
-        @keyframes cyberpunk-line-animation {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 200%;
-            }
+        
+        .purple-glow-container::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            background: radial-gradient(ellipse at center, rgba(132, 88, 255, 0.6) 0%, rgba(132, 88, 255, 0.3) 40%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+            animation: pulse-glow 3s infinite alternate;
         }
-
-        @keyframes pulse-animation {
-            0% {
-                opacity: 0.6;
-                box-shadow: 0 0 5px rgba(0, 184, 255, 0.5);
-            }
-            50% {
-                opacity: 1;
-                box-shadow: 0 0 15px rgba(0, 184, 255, 0.8);
-            }
-            100% {
-                opacity: 0.6;
-                box-shadow: 0 0 5px rgba(0, 184, 255, 0.5);
-            }
-        }
-
+        
         @keyframes pulse-glow {
             0% {
-                text-shadow: 0 0 5px rgba(0, 184, 255, 0.5), 0 0 10px rgba(0, 184, 255, 0.3);
+                opacity: 0.7;
             }
             100% {
-                text-shadow: 0 0 10px rgba(0, 184, 255, 0.7), 0 0 20px rgba(0, 184, 255, 0.5), 0 0 30px rgba(0, 184, 255, 0.3);
+                opacity: 1;
             }
         }
-
-        @keyframes hue-rotate {
-            0% {
-                filter: hue-rotate(0deg);
-            }
-            100% {
-                filter: hue-rotate(360deg);
-            }
+                
+        /* Estructura principal tipo carta de juego */
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 0 15px;
         }
-
-        @keyframes pulse-badge {
-            0% {
-                box-shadow: 0 0 5px rgba(132, 88, 255, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 15px rgba(132, 88, 255, 0.9);
-            }
+        
+        .main-section {
+            flex-basis: 65%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
         }
-
-        /* ============= RESPONSIVE DESIGN ============= */
-        @media (max-width: 1200px) {
-            .main-title {
-                font-size: 2.2rem;
-            }
+        
+        .special-section {
+            flex-basis: 30%;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        /* Estilos para el título */
+        .futuristic-title {
+            color: var(--accent-blue);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(0, 184, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+        
+        .header-line {
+            height: 3px;
+            width: 200px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin-bottom: 2rem;
+        }
+        
+        /* Estilos para los botones */
+        .btn-outline-info {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-info:hover {
+            background-color: var(--accent-cyan);
+            color: var(--primary-dark);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+        
+        .btn-outline-warning {
+            border-color: #ffa500;
+            color: #ffa500;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-warning:hover {
+            background-color: #ffa500;
+            color: var(--primary-dark);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
         }
 
         @media (max-width: 992px) {
-            .special-video {
-                margin-top: 2rem;
-                height: auto;
-            }
-            
-            .featured {
-                transform: scale(1);
-                height: 100%;
-                margin-bottom: 2rem;
-            }
-            
-            .main-grid .row {
-                --bs-gutter-x: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 1.8rem;
-            }
-            
-            .video-title h3 {
-                font-size: 1.2rem;
-            }
-            
-            .special-title h3 {
-                font-size: 1.4rem;
-            }
-            
-            .futuristic-card {
-                padding: 1rem;
-            }
-            
             .main-container {
-                padding: 1rem;
+                flex-direction: column;
             }
-        }
-
-        @media (max-width: 576px) {
-            .main-title {
-                font-size: 1.5rem;
+            
+            .main-section, .special-section {
+                flex-basis: 100%;
+            }
+            
+            .main-section {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+            }
+            
+            .futuristic-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
-    
-    <div class="ai-overlay"></div>
-    
-    <div class="container-fluid main-container">
-        <header class="text-center mb-5">
-            <h1 class="main-title glow-text">Formaciones de Inteligencia Artificial</h1>
-            <div class="cyberpunk-line"></div>
+    <div class="container-fluid">
+        <header class="text-center mb-4">
+            <h1 class="display-4 fw-bold futuristic-title">Formaciones de Inteligencia Artificial</h1>
+            <div class="header-line mx-auto"></div>
         </header>
         
-        <div class="row video-content">
-            <!-- Main Videos Grid - Left Side -->
-            <div class="col-lg-8 main-grid">
-                <div class="row g-4">
-                    <!-- Formacion I -->
-                    <div class="col-md-6 video-card-container">
-                        <div class="video-card futuristic-card">
-                            <div class="card-glow"></div>
-                            <div class="video-title">
-                                <h3>Formacion I</h3>
-                                <div class="pulse-line"></div>
-                            </div>
-                            <div class="video-container ratio ratio-16x9">
+        <div class="main-container">
+            <!-- Sección principal con los 4 videos en cuadrícula -->
+            <div class="main-section">
+                <!-- Formacion I -->
+                <div class="card-container">
+                    <div class="card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Formacion I</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
                                 <iframe src="https://www.youtube.com/embed/5egVYn9ebEA" 
                                         title="Formacion I" 
                                         frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen></iframe>
                             </div>
-                            <div class="card-corner top-left"></div>
-                            <div class="card-corner top-right"></div>
-                            <div class="card-corner bottom-left"></div>
-                            <div class="card-corner bottom-right"></div>
+                            <div class="mt-3 d-flex gap-2 flex-wrap">
+                                <a href="https://docs.google.com/document/d/1rskF1c_bZwic19dWGpl8I_1Y7QgFc7nbnLUnogod4Nk/edit?usp=sharing" target="_blank" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-file-alt me-1"></i> Transcripción
+                                </a>
+                                <a href="https://docs.google.com/presentation/d/1Bpjovukhgco7Qhwj8XwQakiNxf8GqYIugOOCNUN04Cc/edit?usp=sharing" target="_blank" class="btn btn-outline-warning btn-sm">
+                                    <i class="fas fa-presentation me-1"></i> Diapositivas
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Formacion II -->
-                    <div class="col-md-6 video-card-container">
-                        <div class="video-card futuristic-card">
-                            <div class="card-glow"></div>
-                            <div class="video-title">
-                                <h3>Formacion II</h3>
-                                <div class="pulse-line"></div>
-                            </div>
-                            <div class="video-container ratio ratio-16x9">
+                </div>
+                
+                <!-- Formacion II -->
+                <div class="card-container">
+                    <div class="card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Formacion II</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
                                 <iframe src="https://www.youtube.com/embed/P0Zq2sbV9AQ" 
                                         title="Formacion II" 
                                         frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen></iframe>
                             </div>
-                            <div class="card-corner top-left"></div>
-                            <div class="card-corner top-right"></div>
-                            <div class="card-corner bottom-left"></div>
-                            <div class="card-corner bottom-right"></div>
+                            <div class="mt-3 d-flex gap-2 flex-wrap">
+                                <a href="https://docs.google.com/document/d/10xKwZnLCjvEFYE0HkAOzntkYRtvo99dRkjMGQQfqeQE/edit?usp=sharing" target="_blank" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-file-alt me-1"></i> Transcripción
+                                </a>
+                                <a href="https://docs.google.com/presentation/d/1ATmlXugVLoYQdFrKVIkam92E5w_um6uORJHknons-4E/edit?usp=sharing" target="_blank" class="btn btn-outline-warning btn-sm">
+                                    <i class="fas fa-presentation me-1"></i> Diapositivas
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Formacion III -->
-                    <div class="col-md-6 video-card-container">
-                        <div class="video-card futuristic-card">
-                            <div class="card-glow"></div>
-                            <div class="video-title">
-                                <h3>Formacion III</h3>
-                                <div class="pulse-line"></div>
-                            </div>
-                            <div class="video-container ratio ratio-16x9">
+                </div>
+                
+                <!-- Formacion III -->
+                <div class="card-container">
+                    <div class="card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Formacion III</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
                                 <iframe src="https://www.youtube.com/embed/fwTUF6Uj4-M" 
                                         title="Formacion III" 
                                         frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen></iframe>
                             </div>
-                            <div class="card-corner top-left"></div>
-                            <div class="card-corner top-right"></div>
-                            <div class="card-corner bottom-left"></div>
-                            <div class="card-corner bottom-right"></div>
+                            <div class="mt-3 d-flex gap-2 flex-wrap">
+                                <a href="https://docs.google.com/document/d/1gP2ySGA4Dl_1PJAwbATGcoQi2dErYMRrpC7RKFWZNcg/edit?usp=sharing" target="_blank" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-file-alt me-1"></i> Transcripción
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Formacion IV -->
-                    <div class="col-md-6 video-card-container">
-                        <div class="video-card futuristic-card">
-                            <div class="card-glow"></div>
-                            <div class="video-title">
-                                <h3>Formacion IV</h3>
-                                <div class="pulse-line"></div>
-                            </div>
-                            <div class="video-container ratio ratio-16x9">
+                </div>
+                
+                <!-- Formacion IV -->
+                <div class="card-container">
+                    <div class="card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Formacion IV</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
                                 <iframe src="https://www.youtube.com/embed/o2OgAC6an4U" 
                                         title="Formacion IV" 
                                         frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen></iframe>
                             </div>
-                            <div class="card-corner top-left"></div>
-                            <div class="card-corner top-right"></div>
-                            <div class="card-corner bottom-left"></div>
-                            <div class="card-corner bottom-right"></div>
+                            <div class="mt-3 d-flex gap-2 flex-wrap">
+                                <a href="https://docs.google.com/document/d/1Hdr9Mx0X4ZtkeQHn6GD9NbeaFNCwbKe54wtJPGcWwtQ/edit?usp=sharing" target="_blank" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-file-alt me-1"></i> Transcripción
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Special Video - Right Side -->
-            <div class="col-lg-4 special-video">
-                <div class="video-card futuristic-card featured">
-                    <div class="card-glow special-glow"></div>
-                    <div class="video-title special-title">
-                        <h3>Formacion Jon Hernandez</h3>
-                        <div class="pulse-line special-pulse"></div>
-                    </div>
-                    <div class="video-container ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/_GuX0gmSmas" 
-                                title="Formacion Jon Hernandez" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="special-badge">
-                        <div class="special-icon">
-                            <i class="fas fa-star"></i>
+            <!-- Sección especial para el video de Jon Hernandez -->
+            <div class="special-section">
+                <div class="purple-glow-container">
+                    <div class="card special-card">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        
+                        <div class="badge-special">
+                            <i class="fas fa-star me-1"></i> ESPECIAL
+                        </div>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Formacion Jon Hernandez</h3>
+                            <div class="line"></div>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/_GuX0gmSmas" 
+                                        title="Formacion Jon Hernandez" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="mt-3 d-flex gap-2 flex-wrap">
+                                <a href="https://docs.google.com/document/d/1rTtgjskcqIla4NHKkwb_YR1DjtswUF61MVvqPcA9Ocs/edit?usp=sharing" target="_blank" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-file-alt me-1"></i> Transcripción
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-corner top-left"></div>
-                    <div class="card-corner top-right"></div>
-                    <div class="card-corner bottom-left"></div>
-                    <div class="card-corner bottom-right"></div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize particles.js
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 80,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": ["#00b8ff", "#8458ff", "#00ffcc"]
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 2,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#00b8ff",
-                        "opacity": 0.2,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 1,
-                        "direction": "none",
-                        "random": true,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "grab"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_linked": {
-                                "opacity": 0.8
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-            
-            // Add hover effects for video cards
-            const videoCards = document.querySelectorAll('.futuristic-card');
-            
-            videoCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    // Increase the glow effect
-                    const glow = this.querySelector('.card-glow');
-                    glow.style.opacity = '0.8';
-                    
-                    // Animate card corners
-                    const corners = this.querySelectorAll('.card-corner');
-                    corners.forEach(corner => {
-                        corner.style.transition = 'width 0.3s, height 0.3s';
-                        corner.style.width = '15px';
-                        corner.style.height = '15px';
-                    });
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    // Reset the glow effect
-                    const glow = this.querySelector('.card-glow');
-                    if (!this.classList.contains('featured')) {
-                        glow.style.opacity = '0';
-                    }
-                    
-                    // Reset card corners
-                    const corners = this.querySelectorAll('.card-corner');
-                    corners.forEach(corner => {
-                        corner.style.width = '10px';
-                        corner.style.height = '10px';
-                    });
-                });
-            });
-            
-            // Add fade-in animation for page elements
-            const mainContainer = document.querySelector('.main-container');
-            mainContainer.style.opacity = '0';
-            mainContainer.style.transform = 'translateY(20px)';
-            mainContainer.style.transition = 'opacity 1s ease, transform 1s ease';
-            
-            setTimeout(() => {
-                mainContainer.style.opacity = '1';
-                mainContainer.style.transform = 'translateY(0)';
-            }, 300);
-        });
-    </script>
 </body>
 </html>
