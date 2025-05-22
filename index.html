@@ -54,7 +54,11 @@
             gap: 25px;
         }
         .full-card{
-            grid-column: 2;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
             display: block;
         }
         .video-card {
@@ -112,17 +116,18 @@
         </div>
 
         <div class="video-card">
-            <iframe src="https://www.youtube.com/watch?v=o2OgAC6an4U" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/o2OgAC6an4U" allowfullscreen></iframe>
             <div class="video-title">Formación 4</div>
         </div>
 
-        <div class="full-card">
+        
+
+    </div>
+    <div class="full-card">
             <div class="video-card">
-                <iframe src="https://www.youtube.com/watch?v=_GuX0gmSmas" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/_GuX0gmSmas" allowfullscreen></iframe>
                 <div class="video-title">Formación Jon Hernandez</div>
             </div>
         </div>
-
-    </div>
 </body>
 </html>
